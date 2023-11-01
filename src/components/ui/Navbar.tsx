@@ -1,21 +1,42 @@
-import React, { useContext } from 'react';
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import { UIContext } from '@/context/ui';
+import React from 'react';
+import Link from 'next/link';
+import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-const Navbar = () => {
-    const { openSideMenu } = useContext(UIContext);
+interface Props {
+    toggleTheme?: () => void;
+    isTheme?: {
+        palette: {
+            mode: string;
+        };
+    };
+}
 
-    return (
-        <AppBar position="sticky">
-            <Toolbar>
-                <IconButton size="large" edge="start" onClick={openSideMenu}>
-                    <MenuOutlinedIcon />
+const Navbar = ({ toggleTheme, isTheme }: Props) => (
+    <AppBar position="sticky">
+        <Toolbar>
+            <Grid container justifyContent="space-between" alignItems="center">
+                <Link
+                    href="/"
+                    passHref
+                    style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                    }}
+                >
+                    <Typography variant="h6">OpenJira</Typography>
+                </Link>
+                <IconButton onClick={toggleTheme} color="inherit">
+                    {isTheme?.palette.mode === 'dark' ? (
+                        <Brightness4Icon />
+                    ) : (
+                        <Brightness7Icon />
+                    )}
                 </IconButton>
-                <Typography variant="h6">OpenJira</Typography>
-            </Toolbar>
-        </AppBar>
-    );
-};
+            </Grid>
+        </Toolbar>
+    </AppBar>
+);
 
 export { Navbar };

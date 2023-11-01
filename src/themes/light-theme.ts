@@ -8,10 +8,7 @@ export const lightTheme = createTheme({
             default: grey[300],
         },
         primary: {
-            main: '#4a148c',
-        },
-        secondary: {
-            main: '#19857b',
+            main: '#939393',
         },
         error: {
             main: red.A400,
@@ -22,7 +19,11 @@ export const lightTheme = createTheme({
             defaultProps: {
                 elevation: 0,
             },
-            styleOverrides: {},
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#939393',
+                },
+            },
         },
     },
 });

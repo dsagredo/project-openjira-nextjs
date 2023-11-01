@@ -3,9 +3,22 @@ import Layout from '@/components/layouts/Layout';
 import { Card, CardContent, CardHeader, Grid } from '@mui/material';
 import { NewEntry, EntryList } from '../components/ui';
 
-const HomePage: NextPage = () => {
+interface Props {
+    toggleTheme: () => void;
+    isTheme: {
+        palette: {
+            mode: string;
+        };
+    };
+}
+
+const HomePage: NextPage<Props> = ({ toggleTheme, isTheme }) => {
     return (
-        <Layout title="Home - OpenJira">
+        <Layout
+            title="Home - OpenJira"
+            toggleTheme={toggleTheme}
+            isTheme={isTheme}
+        >
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={4}>
                     <Card sx={{ height: 'calc(100vh - 100px)' }}>
