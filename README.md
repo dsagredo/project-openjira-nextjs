@@ -1,4 +1,4 @@
-# Next.js OpenJira App
+# Proyecto OpenJira App
 
 Para correr localmente, se necesita la base de datos
 
